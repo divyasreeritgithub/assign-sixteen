@@ -16,9 +16,11 @@
   <body>
     <div class="container">
       <h1>Generator a <br /><span>Random password</span></h1>
-      <div class="display">
-        <input type="text" id="password" placeholder="Password" />
-        <img src="images/copy one.png" alt="copy" />
+      <div class="main">
+        <div class="display">
+          <input type="text" id="text-to-copy" placeholder="Password" />
+          <button id="copy-button"><i class="fa-solid fa-copy"></i></button>
+        </div>
       </div>
       <button onclick="createPassword()">
         <i class="fa-solid fa-bolt"></i>Generate Password
@@ -26,7 +28,7 @@
     </div>
 
     <script>
-      const passwordBox = document.getElementById("password");
+      const passwordBox = document.getElementById("text-to-copy");
       const length = 12;
 
       const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -48,6 +50,26 @@
         }
         passwordBox.value = password;
       }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const textToCopy = document.getElementById("text-to-copy");
+        const copyButton = document.getElementById("copy-button");
+        const tickMark = document.getElementById("tick-mark");
+        const mainEle = document.querySelector(".main");
+
+        copyButton.addEventListener("click", function () {
+          textToCopy.select();
+
+          document.execCommand("copy");
+
+          window.getSelection().removeAllRanges();
+          mainEle.classList.add("active");
+
+          setTimeout(() => {
+            mainEle.classList.remove("active");
+          }, 1000);
+        });
+      });
     </script>
   </body>
 </html>

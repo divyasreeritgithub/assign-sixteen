@@ -8,10 +8,6 @@ body {
   color: #fff;
 }
 
-div img {
-  width: 45px;
-  height: 45px;
-}
 .container {
   margin: 12%;
   width: 90%;
@@ -38,9 +34,7 @@ div img {
   border-bottom: 4px solid #019f55;
   padding-bottom: 7px;
 }
-.display img {
-  cursor: pointer;
-}
+
 .display input {
   border: 0;
   outline: 0;
@@ -66,4 +60,40 @@ div img {
 }
 button i {
   margin-right: 9px;
+}
+
+.main button::before {
+  position: absolute;
+  content: "copied";
+  color: #fff;
+  left: 60%;
+  margin-left: -5px;
+  background: #019f55;
+  padding: 7px 14px;
+  border-radius: 4px;
+  font-size: 18px;
+  display: none;
+}
+
+.main button::after {
+  content: "";
+  position: absolute;
+
+  right: 40%;
+  width: 10px;
+  height: 10px;
+  background: #019f55;
+  transform: rotate(45deg);
+  display: none;
+}
+
+.main.active button::before,
+.main.active button::after {
+  display: block;
+}
+
+#copy-button {
+  background: #fff;
+  color: #019f55;
+  font-size: 30px;
 }
